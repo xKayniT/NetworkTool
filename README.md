@@ -15,7 +15,7 @@ Here is all the features available to date :
 - SSL checker for website(sslcheck.io endpoint)
 
 - Hash file analysis -> only hash file calculation currently
-- 
+
 - Sniffing packets on network with scapy
 
 - Identify if a mail is for phishing or not ---> Probably SOON
