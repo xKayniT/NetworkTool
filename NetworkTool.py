@@ -10,6 +10,7 @@ from requests import post
 import hashlib
 import pathlib
 import requests
+import re
 
 def display():
     print("Welcome to Network Tool Analyzer. This tool is developed by xKayniT using scapy library and differents API endpoints.")
@@ -85,13 +86,33 @@ def sniffing_packets():
 # The purpose of this function is to give to the user a feedback about a given hash calculated from a file or hash(virustotal and kaspersky endpoint)
 def hash_analysis():
     print("--Hash analysis option--")
-    targeted_file = str(input("Indicate the full path of the targeted file or a hash : "))
+    targeted_file_hash = str(input("Indicate the full path of the targeted file or a hash : "))
     try:
-        md5_hash_file = hashlib.md5(pathlib.Path(targeted_file).read_bytes()).hexdigest()
-        print(md5_hash_file)
+        # Check if the given string is a hash, else calculate it from a file
+        if re.search(r"^[A-Za-z0-9]{32}$", targeted_file_hash):
+            # Send the request to virustotal API
+            url = "https://www.virustotal.com/api/v3/files/" + targeted_file_hash
+            headers = {
+                "accept": "application/json",
+                "x-apikey": "YOUR-API-KEY"
+            }
+            response = requests.get(url, headers=headers)
+            # Transform received data
+            data = response.json()
+            print(json.dumps(data, indent=4))
+        else: 
+            md5_hash_file = hashlib.md5(pathlib.Path(targeted_file_hash).read_bytes()).hexdigest()
+            # Send the request to virustotal API
+            url = "https://www.virustotal.com/api/v3/files/" + md5_hash_file
+            headers = {
+                "accept": "application/json",
+                "x-apikey": "YOUR-API-KEY"
+            }
+            response = requests.get(url, headers=headers)
+            # Transform received data
+            data = response.json()
+            print(json.dumps(data, indent=4))
     except:
         print("Error in hash calculation")
-
-
 
 display()
