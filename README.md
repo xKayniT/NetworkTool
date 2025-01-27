@@ -1,4 +1,4 @@
-Hello and welcome to my GitHub pages. This repository contains a tool which is named **NetworkTool**. The goal of this tool is to give several features related to network, cybersecurity and others in one centralized tool. The tool is developed in Python 3.12.7 version with some well-known libraries such Scapy and endpoints API. 
+Hello and welcome to my GitHub pages. This repository contains a tool which is named **NetworkTool**. The goal of this tool is to give several features related to network, cybersecurity and others in one centralized tool. The tool is developed in Python with some well-known libraries such Scapy and endpoints API. 
 
 To execute the python code, you need to install the libraries requirements first with the following command : 
 
@@ -18,4 +18,4 @@ Here is all the features available to date :
   
 - Sniffing packets on network with scapy
 
-- Identify if a mail is in a databreach(Have I Been Pwnd API) ---> Probably SOON but need payment
+- Browse Certificate Transparency logs for website -> SOON
