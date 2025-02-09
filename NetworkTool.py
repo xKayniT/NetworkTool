@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 """This code provides some network and cybersecurity features"""
 # Date : 19/09/2024
 # Author : xKayniT
@@ -9,11 +10,12 @@ import re
 import json
 import subprocess
 import requests
-from scapy.all import *
+from scapy.all import IP, ICMP, sr1, sniff, conf, traceroute_map # pylint: disable=no-name-in-module
 
 def display():
     """This function is here to display a menu for user."""
-    print("Welcome to Network Tool Analyzer. This tool is developed by xKayniT using scapy library and differents API endpoints.")
+    print("Welcome to Network Tool Analyzer. This tool is developed by xKayniT using scapy library \
+    and differents API endpoints.")
     print("Please choose an options below :")
     print("1. Ping")
     print("2. Traceroute(with geographical view of IP address)")
@@ -55,12 +57,14 @@ def traceroute_func():
     conf.geoip_city = "databases/GeoLite2-City.mmdb"
     try:
         traceroute_map([chosen_domain])
-    except:
-        raise ValueError("Error in loading maps")
+    except Exception as exc:
+        raise ValueError("Error in loading maps") from exc
 
-# The purpose of this function is to call ssl-checker.io API to retrieve informations from the website certificate
+# The purpose of this function is to call ssl-checker.io API to retrieve informations from
+# the website certificate
 def ssl_informations():
-    """The purpose of this function is to call ssl-checker.io API to retrieve informations from the website certificate."""
+    """The purpose of this function is to call ssl-checker.io API to retrieve informations \
+        from the website certificate."""
     print("--SSL checker option--")
     chosen_website = str(input("Choose the targeted website : "))
     cmd = "curl https://ssl-checker.io/api/v1/check/" + chosen_website
@@ -73,8 +77,8 @@ def ssl_informations():
             json_data = json.loads(returned_value.stdout)
             formatted_json = json.dumps(json_data, indent=4)
             print(formatted_json)
-        except:
-            raise Exception("JSOn data can't be displayed")
+        except Exception as exc:
+            raise ValueError("JSOn data can't be displayed") from exc
 
 # The purpose of this function is to give to the user a mean to sniff packets
 def sniffing_packets():
@@ -85,12 +89,14 @@ def sniffing_packets():
     try:
         packets_sniffing = sniff(filter=filter_protocol, count=sniffing_packets_number)
         packets_sniffing.summary()
-    except:
-        raise Exception("Sniffing options have failed")
+    except Exception as exc:
+        raise ValueError("Sniffing options have failed") from exc
 
-# The purpose of this function is to give to the user a feedback about a given hash calculated from a file or hash(virustotal and kaspersky endpoint)
+# The purpose of this function is to give to the user a feedback about a given hash
+# calculated from a file or hash(virustotal and kaspersky endpoint)
 def hash_analysis():
-    """The purpose of this function is to give to the user a feedback about a given hash calculated from a file or hash(virustotal and kaspersky endpoint)."""
+    """The purpose of this function is to give to the user a feedback about a given hash \
+          calculated from a file or hash(virustotal and kaspersky endpoint)."""
     print("--Hash analysis option--")
     targeted_file_hash = str(input("Indicate the full path of the targeted file or a hash : "))
     try:
@@ -118,7 +124,7 @@ def hash_analysis():
             # Transform received data
             data = response.json()
             print(json.dumps(data, indent=4))
-    except:
-        raise Exception("Error in hash calculation")
+    except Exception as exc:
+        raise ValueError("Error in hash calculation") from exc
 
 display()

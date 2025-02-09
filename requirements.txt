@@ -5,11 +5,14 @@ altgraph==0.17.4
 annotated-types==0.7.0
 anyio==4.5.0
 appdirs==1.4.4
+astroid==3.3.8
 asttokens==2.4.1
 attrs==23.1.0
 bcrypt==4.1.3
 beautifulsoup4==4.12.3
+boolean.py==4.0
 branca==0.7.2
+CacheControl==0.14.2
 capstone==5.0.1
 Cartopy==0.23.0
 certifi==2024.8.30
@@ -24,9 +27,12 @@ comm==0.2.0
 contourpy==1.2.0
 cryptography==43.0.1
 cycler==0.12.1
+cyclonedx-python-lib==7.6.2
 debugpy==1.8.0
 decorator==5.1.1
+defusedxml==0.7.1
 deprecation==2.1.0
+dill==0.3.9
 distro==1.9.0
 dynaconf==3.2.6
 evidently @ git+https://github.com/evidentlyai/evidently.git@3a9e199349d25f8bd276b0eb9791817672bccf09
@@ -41,6 +47,7 @@ fsspec==2024.9.0
 geoip2==4.8.0
 geopandas==0.14.1
 h11==0.14.0
+html5lib==1.1
 HTMLParser==0.0.2
 httpcore==1.0.5
 httptools==0.6.1
@@ -50,6 +57,7 @@ intervaltree==3.1.0
 iptools==0.7.0
 ipykernel==6.26.0
 ipython==8.17.2
+isort==6.0.0
 iterative-telemetry==0.0.9
 jedi==0.19.1
 Jinja2==3.1.4
@@ -59,6 +67,7 @@ jqpy==1.0.0
 jupyter_client==8.6.0
 jupyter_core==5.5.0
 kiwisolver==1.4.5
+license-expression==30.4.1
 litestar==2.11.0
 Mako==1.3.5
 markdown-it-py==3.0.0
@@ -66,7 +75,9 @@ MarkupSafe==2.1.5
 matplotlib==3.8.2
 matplotlib-inline==0.1.6
 maxminddb==2.6.2
+mccabe==0.7.0
 mdurl==0.1.2
+msgpack==1.1.0
 msgspec==0.18.6
 multidict==6.1.0
 mypy-extensions==1.0.0
@@ -76,6 +87,7 @@ nltk==3.9.1
 numpy==1.26.2
 olefile==0.47
 osmnx==1.8.0
+packageurl-python==0.16.0
 packaging==23.2
 pandas==2.1.3
 paramiko==3.4.0
@@ -83,6 +95,9 @@ parso==0.8.3
 patsy==0.5.6
 pefile==2023.2.7
 Pillow==10.1.0
+pip-api==0.0.34
+pip-requirements-parser==32.0.1
+pip_audit==2.7.3
 platformdirs==4.0.0
 plotly==5.24.1
 plumbum==1.8.3
@@ -91,6 +106,7 @@ prompt-toolkit==3.0.41
 psutil==5.9.6
 pure-eval==0.2.2
 pwntools==4.12.0
+py-serializable==1.1.2
 py4j==0.10.9.7
 pyarrow==17.0.0
 pycparser==2.22
@@ -102,6 +118,7 @@ Pygments==2.17.1
 pyinstaller==6.5.0
 pyinstaller-hooks-contrib==2024.3
 PyJWT==2.8.0
+pylint==3.3.4
 PyNaCl==1.5.0
 pyparsing==3.1.1
 pyproj==3.6.1
@@ -136,6 +153,8 @@ statsmodels==0.14.3
 tenacity==9.0.0
 texttable==1.7.0
 threadpoolctl==3.2.0
+toml==0.10.2
+tomlkit==0.13.2
 tornado==6.3.3
 tqdm==4.66.5
 traitlets==5.13.0
@@ -153,6 +172,7 @@ vt==3.1.3.7
 watchdog==5.0.2
 watchfiles==0.24.0
 wcwidth==0.2.10
+webencodings==0.5.1
 websockets==13.0.1
 xyzservices==2024.9.0
 yarl==1.11.1

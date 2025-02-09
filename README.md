@@ -18,4 +18,4 @@ Here is all the features available to date :
   
 - Sniffing packets on network with scapy
 
-- Browse Certificate Transparency logs for website -> SOON
+- Browse Certificate Transparency logs for website(sslmate endpoint) -> SOON
