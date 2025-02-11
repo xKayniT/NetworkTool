@@ -21,6 +21,11 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+
+  safety_vuln_check_job:
+    name: safety_vuln_check_job
+    runs-on: ubuntu-latest
+    steps:
     - uses: pyupio/safety-action@v1
       with:
         api-key: ${{ secrets.SAFETY_API_KEY }}
