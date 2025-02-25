@@ -14,14 +14,15 @@ from scapy.all import IP, ICMP, sr1, sniff, conf, traceroute_map # pylint: disab
 
 def display():
     """This function is here to display a menu for user."""
-    print("Welcome to Network Tool Analyzer. This tool is developed by xKayniT using scapy library \
-    and differents API endpoints.")
+    print("Welcome to Network Tool Analyzer. This tool is developed by xKayniT using scapy library"
+    "and differents API endpoints.")
     print("Please choose an options below :")
     print("1. Ping")
     print("2. Traceroute(with geographical view of IP address)")
     print("3. Check SSL certificate of a website")
     print("4. Sniffing packets")
     print("5. Hash file analysis")
+    print("6. Retrieve CT logs for a website")
     options_number = str(input(""))
     match options_number :
         case "1":
@@ -34,6 +35,8 @@ def display():
             sniffing_packets()
         case "5":
             hash_analysis()
+        case "6":
+            ssl_transparency_logs()
         case _:
             print("Option not available yet")
 
@@ -126,5 +129,26 @@ def hash_analysis():
             print(json.dumps(data, indent=4))
     except Exception as exc:
         raise ValueError("Error in hash calculation") from exc
+
+# The purpose of this function is to give to the user the history of delivered certicate
+# for a targeted website
+def ssl_transparency_logs():
+    """The purpose of this function is to give to the user the history of delivered certicate \
+    for a targeted website"""
+    print("--CT Logs options--")
+    # Fill the field with your api key and add ":" at the end of the key
+    API_KEY = "YOUR-API-KEY"
+    chosen_website = str(input("Choose the targeted website : "))
+    cmd = "curl -u " + API_KEY + " https://api.certspotter.com/v1/issuances?domain=" + chosen_website # pylint: disable=line-too-long
+    # Execute the command
+    returned_value = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=False)
+    if returned_value:
+        try:
+            # Display info with indentation
+            json_data = json.loads(returned_value.stdout)
+            formatted_json = json.dumps(json_data, indent=4)
+            print(formatted_json)
+        except Exception as exc:
+            raise ValueError("JSOn data can't be displayed") from exc
 
 display()
